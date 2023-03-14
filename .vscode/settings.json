@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "agweather_db",
+            "database": "agweather_db",
+            "username": "anton",
+            "password": "Nahsi7ahboid#004"
+        }
+    ]
+}

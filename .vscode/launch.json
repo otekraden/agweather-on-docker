@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true,
+            "justMyCode": true
+        },
+        {
+            "name": "run_archive_scraper",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/manage.py",
+            "args": [
+                "run_archive_scraper"
+            ],
+            "django": true,
+            "justMyCode": true
+        },
+        {
+            "name": "run_forecast_scraper",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/manage.py",
+            "args": [
+                "run_forecast_scraper", 
+                // "foreca"
+                // "rp5"
+                // "yandex"
+                "meteoinfo"
+            ],
+            "django": true,
+            "justMyCode": true
+        },
+        {
+            "name": "dump_db_to_clouds",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/manage.py",
+            "args": [
+                "dump_db_to_clouds"
+            ],
+            "django": true,
+            "justMyCode": true
+        },
+        {
+            "name": "Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+              "--extensionDevelopmentPath=${workspaceFolder}"
+            ]
+          }
+    ]
+}

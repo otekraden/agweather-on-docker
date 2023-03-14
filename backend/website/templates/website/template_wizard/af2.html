@@ -1,0 +1,15 @@
+{% extends "website/template_wizard/template_wizard.html" %}
+
+{% block above_form %}
+    
+    <div "h6 text-gray-400 mb-4">
+        <p class="h6 text-gray-400 mb-2">On this step you need to input URL to source webpage from where data will be scraping.</p>
+        <p class="h6 text-gray-400 mb-2">Follow the sample URL below and find the location you need by analogy:</p>
+        <a href="{{ sample_source_url }}" target="_blank" rel="noopener noreferrer">{{ sample_source_url }}</a>
+        <p class="h6 text-gray-400 my-2">Finally, copy the URL from the browser's address bar and paste it into the form below:</p>
+    </div>
+        
+{% endblock %}
+
+{% block below_form %}
+{% endblock %}

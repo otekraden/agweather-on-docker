@@ -1,0 +1,16 @@
+{% extends "website/template_wizard/template_wizard.html" %}
+
+{% block above_form %}
+    
+    <div "h6 text-gray-400 mb-4">
+        <p class="h6 text-gray-400 mb-2">The Forecast Template is ready to be created.</p>
+        <p class="h6 text-gray-400 mb-2">To make sure there are no errors, manually check First and Last records of the newly scraped data:</p>
+
+        <table class="table table-bordered dataTable">{{ scraped_forecasts }}</table>
+
+    </div>
+        
+{% endblock %}
+
+{% block below_form %}
+{% endblock %}

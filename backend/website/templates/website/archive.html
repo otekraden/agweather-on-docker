@@ -1,0 +1,77 @@
+{% extends "website/base.html" %}
+
+<!-- Begin Page Content -->
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin-bottom: 0 !important;">
+        <!-- <h1 class="h5 mb-0 text-gray-400">Архив погоды в Санкт-Петербурге</h1> -->
+        <!-- <a class="h5 mb-0 text-gray-400" href="/forecast" title="Переход на страницу прогноза">Архив прогнозов в Санкт-Петербурге</a> -->
+        <form id="form" class="p-3 w-100" action='' method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-3 mb-2">
+                    <label for="location">Weather <b>ARCHIVE</b> at Location:</label>
+                        <select class="form-control" id="location" name="location"
+                            value="{{ location }}" onchange="submit();">
+                            {% for loc in locations %}
+                            <option value="{{ loc }}" {% if location == loc %}selected{% endif %}>{{ loc }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    <label for="weather_parameter">Weather parameter:</label>
+                        <select class="form-control" id="weather_parameter" name="weather_parameter"
+                            value="{{ weather_parameter }}" onchange="submit();">
+                            {% for par in weather_parameters %}
+                            <option value="{{ par }}" {% if weather_parameter == par %}selected{% endif %}>{{ par }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+
+                <div class="form-group col-md-2 mb-0">
+                    <label for="selection_period">Selection period, days:</label>
+                    <input id='selection_period' type="number" min="1" max="30" class="form-control"
+                        placeholder="Insert number of days" {% if selection_period %} value="{{ selection_period }}" 
+                        {% endif %} name="selection_period" onchange="submit();">
+                </div>
+
+                <div class="form-group col-md-2 mb-0">
+                    <label for="prediction_range">Prediction range, hours:</label>
+                    <input id='prediction_range' type="number" min="1" max="336" class="form-control"
+                        placeholder="Insert number of hours" {% if prediction_range %} value="{{ prediction_range }}" 
+                        {% endif %} name="prediction_range" onchange="submit();">
+                </div>
+
+                <div class="form-group col-md-2 mb-0">
+                    <label for="period_end_date" >Period end date:</label>
+                    <div class="input-group date" id="datepicker">
+                            <input id="period_end_date" name="period_end_date" type="text" class="form-control" value="{{ period_end_date }}" onchange="submit();">
+                            <span class="input-group-append">
+                                <span class="input-group-text bg-white">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </span>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="chart-area" id="my_chart_area">
+            <canvas id="myAreaChart"></canvas>
+            <script>
+                archiveChart({{ chartjs_data| safe }}, {{ chartjs_options| safe }});
+            </script>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}
