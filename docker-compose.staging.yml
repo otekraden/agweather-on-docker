@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    restart: always
+    # image: otekvonsoraden/agweather_backend:latest
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    command: gunicorn django_project.wsgi:application --bind 0.0.0.0:${BACKEND_PORT}
+    volumes:
+      - static_volume:/home/agweather/backend/static
+      - media_volume:/home/agweather/backend/media
+    expose:
+      - ${BACKEND_PORT}
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    restart: always
+    image: postgres:15-alpine
+    ports:
+      - ${SQL_PORT}:${SQL_PORT}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.staging.db
+    # pg_dump -C -h 134.0.112.35 -U anton -W agweather_db > dump_agweather_db.sql
+    # Nahsi7ahboid#004
+    # docker exec -it db psql --user=otekvonsoraden --dbname=postgres
+    # DROP DATABASE agweather;
+    # CREATE DATABASE agweather;
+    # cat dump_agweather_db.sql | docker exec -i db psql --user=otekvonsoraden --dbname=agweather
+
+  selenium:
+    container_name: selenium
+    restart: always
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    restart: always
+    build: nginx
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - static_volume:/home/agweather/backend/static
+      - media_volume:/home/agweather/backend/media
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - backend
+  acme-companion:
+    image: nginxproxy/acme-companion
+    env_file:
+      - ./.env.staging.proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - acme:/etc/acme.sh
+    depends_on:
+      - nginx-proxy
+  # nginx:
+  #   image: otekvonsoraden/nginx:latest
+  #   # build: ./nginx
+  #   container_name: nginx
+  #   restart: always
+  #   ports:
+  #     - 1337:80
+  #   depends_on:
+  #     - backend
+  #   volumes:
+  #     - static_volume:/home/agweather/backend/static
+  #     - media_volume:/home/agweather/backend/media
+  #     # - static_volume:/home/backend/backend/static
+  #     # - media_volume:/home/backend/backend/media
+      
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  certs:
+  html:
+  vhost:
+  acme:

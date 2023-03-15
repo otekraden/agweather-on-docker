@@ -1,0 +1,9 @@
+location /static/ {
+  alias /home/agweather/backend/static/;
+  add_header Access-Control-Allow-Origin *;
+}
+
+location /media/ {
+  alias /home/agweather/backend/media/;
+  add_header Access-Control-Allow-Origin *;
+}
