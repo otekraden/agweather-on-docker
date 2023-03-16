@@ -10,9 +10,6 @@ class Command(BaseCommand):
 
     @elapsed_time_decorator(LOGGER)
     def handle(self, *args, **kwargs):
-        try:
-            Archive.objects.all().delete()
-            LOGGER.debug("All archive records has been deleted from database.")
-        except Exception:
-            return
-        return True
+
+        Archive.objects.all().delete()
+        LOGGER.debug("All archive records has been deleted from database.")

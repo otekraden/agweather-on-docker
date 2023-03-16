@@ -3,7 +3,7 @@ from datascraper.models import (
     Forecast, ForecastTemplate, elapsed_time_decorator)
 from datetime import datetime
 from datascraper.logging import init_logger
-from backports import zoneinfo
+from zoneinfo import ZoneInfo
 
 LOGGER = init_logger('Clear forecasts')
 
@@ -19,7 +19,7 @@ class Command(BaseCommand):
         for template in ForecastTemplate.objects.all():
 
             template.last_scraped = datetime.fromtimestamp(
-                0, tz=zoneinfo.ZoneInfo('UTC'))
+                0, tz=ZoneInfo('UTC'))
             template.save()
 
         LOGGER.debug("All forecast records has been deleted from database.")

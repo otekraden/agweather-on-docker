@@ -3,7 +3,7 @@
 ###########
 
 # pull official base image
-FROM python:3.11.8-slim-bookworm as builder
+FROM python:3.11.8-bookworm as builder
 
 # set work directory
 WORKDIR /usr/src/agweather
@@ -26,7 +26,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/agweather/wheels -r 
 #########
 
 # pull official base image
-FROM python:3.11.8-slim-bookworm
+FROM python:3.11.8-bookworm
 
 # create directory for the backend user
 RUN mkdir -p /home/agweather
@@ -48,6 +48,14 @@ COPY --from=builder /usr/src/agweather/wheels /wheels
 COPY --from=builder /usr/src/agweather/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache /wheels/*
+
+# install unzip
+# RUN sudo apt-get install zip
+RUN apt update
+RUN apt install unzip
+
+# RUN apt install postgresql-client postgresql-client-common
+RUN apt install postgresql-client postgresql-client-common libpq-dev
 
 # copy entrypoint.prod.sh
 # COPY ./entrypoint.prod.sh .

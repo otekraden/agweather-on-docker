@@ -6,7 +6,7 @@ services:
     restart: always
     # image: otekvonsoraden/agweather_backend:latest
     build: 
-      context: ./backend
+      context: ../../backend
       dockerfile: Dockerfile.prod
     command: gunicorn django_project.wsgi:application --bind 0.0.0.0:${BACKEND_PORT}
     volumes:
@@ -22,19 +22,23 @@ services:
   db:
     container_name: db
     restart: always
-    image: postgres:15-alpine
+    # image: postgres:15-alpine
+    build: 
+      context: ./db
+      dockerfile: Dockerfile
     ports:
-      - ${SQL_PORT}:${SQL_PORT}
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.staging.db
+      - ./.env
+    # command: docker exec backend cat init_agweather_db.sql | psql --user=otekvonsoraden --dbname=agweather_db
     # pg_dump -C -h 134.0.112.35 -U anton -W agweather_db > dump_agweather_db.sql
     # Nahsi7ahboid#004
     # docker exec -it db psql --user=otekvonsoraden --dbname=postgres
-    # DROP DATABASE agweather;
-    # CREATE DATABASE agweather;
-    # cat dump_agweather_db.sql | docker exec -i db psql --user=otekvonsoraden --dbname=agweather
+    # DROP DATABASE agweather_db;
+    # CREATE DATABASE agweather_db;
+    # cat dump_agweather_db.sql | docker exec -i db psql --user=otekvonsoraden --dbname=agweather_db
 
   selenium:
     container_name: selenium
@@ -62,7 +66,7 @@ services:
   acme-companion:
     image: nginxproxy/acme-companion
     env_file:
-      - ./.env.staging.proxy-companion
+      - ./.env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - certs:/etc/nginx/certs
@@ -71,20 +75,6 @@ services:
       - acme:/etc/acme.sh
     depends_on:
       - nginx-proxy
-  # nginx:
-  #   image: otekvonsoraden/nginx:latest
-  #   # build: ./nginx
-  #   container_name: nginx
-  #   restart: always
-  #   ports:
-  #     - 1337:80
-  #   depends_on:
-  #     - backend
-  #   volumes:
-  #     - static_volume:/home/agweather/backend/static
-  #     - media_volume:/home/agweather/backend/media
-  #     # - static_volume:/home/backend/backend/static
-  #     # - media_volume:/home/backend/backend/media
       
 volumes:
   postgres_data:

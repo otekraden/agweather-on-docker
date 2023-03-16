@@ -23,7 +23,7 @@ class Command(BaseCommand):
         last_dump_file_name = last_dump_file.name
         last_dump_file.download(last_dump_file_name)
 
-        # unzipping dump file
+        # # unzipping dump file
         os.system(f"unzip {last_dump_file_name}")
         os.remove(last_dump_file_name)
         last_dump_file_name = last_dump_file_name.replace(".zip", "")
