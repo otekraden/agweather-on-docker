@@ -64,6 +64,8 @@ services:
     depends_on:
       - backend
   acme-companion:
+    container_name: acme-companion
+    restart: always
     image: nginxproxy/acme-companion
     env_file:
       - ./.env
