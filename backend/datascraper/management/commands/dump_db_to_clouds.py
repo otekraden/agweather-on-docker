@@ -7,6 +7,7 @@ import tg_logger
 import zipfile
 from datascraper.logging import init_logger
 from datascraper.models import elapsed_time_decorator
+import subprocess
 
 LOGGER = init_logger('Dump database to Clouds')
 
@@ -26,11 +27,31 @@ class Command(BaseCommand):
         postgres_db = os.environ["POSTGRES_DB"]
         postgres_user = os.environ["POSTGRES_USER"]
 
+        # reading from .env
+        postgres_db = os.environ.get("POSTGRES_DB")
+        postgres_user = os.environ.get("POSTGRES_USER")
+        postgres_password = os.environ.get("POSTGRES_PASSWORD")
+        postgres_host = os.environ.get("POSTGRES_HOST")
+        postgres_port = os.environ.get("POSTGRES_PORT")
+
         # creating dump file
-        os.system(f"pg_dump -U {postgres_user} -Ft \
-                  --exclude-table 'public.django_content_type' \
-                  --exclude-table 'public.auth_permission' \
-                  {postgres_db} > {dump_file_name}")
+        process = subprocess.Popen(
+            ['pg_dump',
+                '--dbname=postgresql://{}:{}@{}:{}/{}'.format(
+                    postgres_user,
+                    postgres_password,
+                    postgres_host,
+                    postgres_port,
+                    postgres_db),
+                '-Fc',
+                '-f', dump_file_name,
+                '-v'],
+            stdout=subprocess.PIPE)
+
+        if int(process.returncode) != 0:
+            LOGGER.debug('Command failed. Return code : {}'.format(
+                process.returncode))
+            exit(1)
 
         LOGGER.debug("Dump file created")
 
