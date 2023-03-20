@@ -53,6 +53,7 @@ RUN pip install --no-cache /wheels/*
 # RUN sudo apt-get install zip
 RUN apt update
 RUN apt install unzip
+RUN apt install zip
 
 # RUN apt install postgresql-client postgresql-client-common
 RUN apt install postgresql-client postgresql-client-common libpq-dev

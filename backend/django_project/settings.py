@@ -96,21 +96,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'agweather_db',
-#         'USER': 'anton',
-#         'PASSWORD': 'Nahsi7ahboid#004',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     },
-#     'new': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'database_for_tests.sqlite3',
-#     },
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
