@@ -5,9 +5,9 @@ services:
     container_name: backend
     restart: always
     # image: otekvonsoraden/agweather_backend:latest
-    build: 
-      context: ../../backend
-      dockerfile: Dockerfile.prod
+    # build: 
+    #   context: ../../backend
+    #   dockerfile: Dockerfile.prod
     command: gunicorn django_project.wsgi:application --bind 0.0.0.0:${BACKEND_PORT}
     volumes:
       - static_volume:/home/agweather/backend/static
