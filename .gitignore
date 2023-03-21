@@ -1,7 +1,6 @@
 db.sqlite3
 # settings.py
 _temp
-static/admin
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -107,29 +106,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-redis-stable.tar.gz
-redis-stable/
-agweather/beget/
-static/datascraper_config.json
-datascraper/rain_water.py
-datascraper/knapsack.py
-_training/
-datascraper/forecasts_old.py
-_dump/
-proxies_extension.zip
-*dump_db.json
-*dump_db.json.zip
-
-# website/static/website/*
-website/static/website/css/*
-website/static/website/img/*
-website/static/website/scss/*
-website/static/website/vendor/*
-website/static/website/js/*
-!myscripts.js
-backend/static/
-media/
-database_for_tests.sqlite3
 
 # Dockerfile
 # entrypoint.sh
