@@ -49,8 +49,7 @@ COPY --from=builder /usr/src/agweather/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache /wheels/*
 
-# install unzip
-# RUN sudo apt-get install zip
+# install zip/unzip
 RUN apt update
 RUN apt install unzip
 RUN apt install zip

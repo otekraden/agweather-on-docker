@@ -24,7 +24,7 @@ services:
     restart: always
     # image: postgres:15-alpine
     build: 
-      context: ./db
+      context: ../../db
       dockerfile: Dockerfile
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
@@ -32,13 +32,6 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
-    # command: docker exec backend cat init_agweather_db.sql | psql --user=otekvonsoraden --dbname=agweather_db
-    # pg_dump -C -h 134.0.112.35 -U anton -W agweather_db > dump_agweather_db.sql
-    # Nahsi7ahboid#004
-    # docker exec -it db psql --user=otekvonsoraden --dbname=postgres
-    # DROP DATABASE agweather_db;
-    # CREATE DATABASE agweather_db;
-    # cat dump_agweather_db.sql | docker exec -i db psql --user=otekvonsoraden --dbname=agweather_db
 
   selenium:
     container_name: selenium
@@ -50,7 +43,9 @@ services:
   nginx-proxy:
     container_name: nginx-proxy
     restart: always
-    build: nginx
+    build:
+      context: ../../nginx
+      dockerfile: Dockerfile
     ports:
       - 443:443
       - 80:80
