@@ -1,4 +1,4 @@
-name: Build and share Docker Image to Docker Hub
+name: Build and share Docker Images to Docker Hub
 
 on: workflow_dispatch
   # push:
@@ -36,7 +36,7 @@ jobs:
           context: ./db
           file: ./db/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO_NAME }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO_NAME }}_db:latest
 
       - name: Build and push nginx
         uses: docker/build-push-action@v4
@@ -44,4 +44,4 @@ jobs:
           context: ./nginx
           file: ./nginx/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO_NAME }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO_NAME }}_nginx:latest
