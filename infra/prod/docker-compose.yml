@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    restart: always
+    # image: otekvonsoraden/agweather_backend:latest
+    build: 
+      context: ../../backend
+      dockerfile: Dockerfile.prod
+    command: gunicorn django_project.wsgi:application --bind 0.0.0.0:${BACKEND_PORT}
+    volumes:
+      - static_volume:/home/agweather/backend/static
+      - media_volume:/home/agweather/backend/media
+    expose:
+      - ${BACKEND_PORT}
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    restart: always
+    # image: postgres:15-alpine
+    build: 
+      context: ../../db
+      dockerfile: Dockerfile
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+
+  selenium:
+    container_name: selenium
+    restart: always
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    restart: always
+    build:
+      context: ../../nginx
+      dockerfile: Dockerfile
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - static_volume:/home/agweather/backend/static
+      - media_volume:/home/agweather/backend/media
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - backend
+  acme-companion:
+    container_name: acme-companion
+    restart: always
+    image: nginxproxy/acme-companion
+    env_file:
+      - ./.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - acme:/etc/acme.sh
+    depends_on:
+      - nginx-proxy
+      
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  certs:
+  html:
+  vhost:
+  acme:
