@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'datascraper.apps.DatascraperConfig',
     'django_admin_inline_paginator',
     'widget_tweaks',
+    'rest_framework',
+    'agweather_rest.apps.AgweatherRestConfig',
 ]
 
 MIDDLEWARE = [
@@ -177,3 +179,14 @@ MEDIA_URL = '/media/'
 
 # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
