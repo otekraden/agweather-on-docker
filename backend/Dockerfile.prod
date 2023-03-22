@@ -71,7 +71,7 @@ RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 COPY . $APP_HOME
 
 # chown all the files to the backend user
-RUN chown -R agweather:agweather $APP_HOME
+RUN chown -R agweather:agweather $HOME
 
 # change to the backend user
 USER agweather
