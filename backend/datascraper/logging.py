@@ -1,7 +1,6 @@
 import logging
 import sys
 import tg_logger
-from dotenv import load_dotenv
 import os
 from pathlib import Path
 
@@ -28,11 +27,10 @@ def init_logger(name):
     # file_handler.setLevel(logging.DEBUG)
 
     # logging to Telegram
-    load_dotenv()
-    token = os.environ["TELEGRAM_TOKEN"]
-    users = os.environ["TELEGRAM_USERS"].split('\n')
+    token = os.environ.get("TELEGRAM_TOKEN")
+    users = os.environ.get("TELEGRAM_USERS").split('\n')
     telegram_handler = tg_logger.setup(logger, token=token, users=users)
-    # telegram_handler.setLevel(logging.CRITICAL)
-    telegram_handler.setLevel(logging.INFO)
+    telegram_handler.setLevel(logging.CRITICAL)
+    # telegram_handler.setLevel(logging.INFO)
 
     return logger
