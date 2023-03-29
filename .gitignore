@@ -111,3 +111,4 @@ venv.bak/
 # entrypoint.sh
 # *.sql
 # _git_old
+_train/
