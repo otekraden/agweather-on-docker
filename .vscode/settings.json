@@ -10,5 +10,12 @@
             "username": "anton",
             "password": "Nahsi7ahboid#004"
         }
-    ]
+    ],
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "cSpell.enableFiletypes": [
+        "django-html"
+    ],
 }

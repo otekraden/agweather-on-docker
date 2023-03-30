@@ -1,0 +1,7 @@
+# On server terminal call command "crontab -e" and insert this lines at the end:
+
+# EVERY 15 MINUTES RUN FORECAST & ARCHIVE SCRAPERS
+*/15 * * * * /usr/local/bin/docker-compose -f /home/agweather-on-docker/docker-compose.yml exec backend python manage.py run_datascraper
+
+# EVERY 12 HOUR SEND DUMP DB & MEDIA FOLDER TO YANDEX DISK
+0 */12 * * * /usr/local/bin/docker-compose -f /home/agweather-on-docker/docker-compose.yml exec backend python manage.py dump_data_to_ydsk

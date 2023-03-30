@@ -112,3 +112,4 @@ venv.bak/
 # *.sql
 # _git_old
 _train/
+cspell.json
