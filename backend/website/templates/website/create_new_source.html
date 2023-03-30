@@ -1,12 +1,12 @@
 {% extends "user_profile/base_container.html" %}
 
 {% block inner_content %}
-	<div class="text-center">
-	    <p class="text-gray-400 mb-2 row">Creating a new weather source is not possible by filling out a simple form on a web page.<br/>
-			To do this, you need to write a Scrapper Class in the Python programming language for the desired weather site.<br/>
+	<div class="text">
+	    <p class="text-gray-400">Creating a new weather source is not possible by filling out a simple form on a web page.
+			To do this, you need to write a Scrapper Class in the Python programming language for the desired weather site.
 			If you are just learning Python, it will be a good practice for you to use the Beautiful soup library.<br/>
-			Follow the link below on GitHub where you can write a commit:</p>
+			<br/>
+			Follow the link below on GitHub where you can write pull request:</p>
 		<a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ url }}</a>
-		
     </div>
 {% endblock %}

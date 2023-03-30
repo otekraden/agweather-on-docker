@@ -312,12 +312,12 @@ def feedback(request):
     return redirect("forum:topic-detail", pk=feedback_topic_pk)
 
 
-def idea(request):
-    """The Website Idea."""
+def help(request):
+    """The Website Help page."""
 
     return render(
         request=request,
-        template_name='website/idea.html',
+        template_name='website/help.html',
         )
 ##################
 # MISC FUNCTIONS #
@@ -570,4 +570,4 @@ def create_new_source(request):
     return render(
         request=request,
         template_name='website/create_new_source.html',
-        context={'url': "https://github.com/venom812/agweather.ru"})
+        context={'url': "https://github.com/OtekvonSoraden/agweather-on-docker"})
