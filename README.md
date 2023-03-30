@@ -13,7 +13,7 @@ _What happens if to save the weather forecast data and then compare it with the 
 
 Thus, it will be possible to graphically evaluate which of the services is most accurate in certain conditions.
 
-![agw_screenshot](https://github.com/OtekvonSoraden/agweather-on-docker/assets/92234377/211a818a-a126-4c11-a894-e887b528bbb4)
+![agw_screenshot](https://github.com/OtekvonSoraden/agweather-on-docker/assets/92234377/5c92da64-7f44-44f8-8dea-67ea6213603d)
 
 ## How does it works?
 
