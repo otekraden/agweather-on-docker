@@ -42,19 +42,18 @@ I'am planning to remake this app with Django REST & Vue.js frameworks. So there 
 I have written brief instruction how to do it from Docker containers. 
 Follow all the steps below and launch the app yourself!
 
-1) Since Docker technology is used here, it doesn't matter which operating system is used, but just in case, I'm clarifying: _Ubuntu 20.04_
-Launch terminal.
+1) Since Docker technology is used here, it doesn't matter which operating system is used, but just in case, I'm clarifying: _Ubuntu 20.04_ \
+Launch OS in terminal.
 
-2) At first you need installed Docker vs Docker-compose. Check their installations:
-_docker --version && docker-compose --version_
-I have: _Docker version 25.0.3, Docker Compose version v2.24.6_ 
+2) At first you need installed Docker vs Docker-compose. Check their installations: \
+_docker --version && docker-compose --version_ \
+I have: _Docker version 25.0.3, Docker Compose version v2.24.6_ \
 If you need installation, see here: https://docs.docker.com/engine/install/
 
-3) Clone repository by command:
+3) Clone repository by command: \
 _git clone_ https://github.com/OtekvonSoraden/agweather-on-docker.git
 
-4) Go to folder:
-_cd agweather-on-docker/infra/staging/_
+4) Go to folder: _cd agweather-on-docker/infra/staging/_
 
 5) Open _template_env.txt_ file and edit it by inside instructions.
 Save it as ".env"
@@ -65,14 +64,14 @@ Save it as ".env"
 ![agw_screenshot1](https://github.com/OtekvonSoraden/agweather-on-docker/assets/92234377/5a5c1179-3e9c-408e-a5b5-b3b2542e779c)
 
 
-8) If everything Ok, all containers have been started, you can visit our web-application by link: http://localhost:80
-Default superuser is 'admin' with the password "wYuA*v3C9AaX". 
+8) If everything Ok, all containers have been started, you can visit our web-application by link: http://localhost:80 \
+Default superuser is *'admin'* with the password *"wYuA*v3C9AaX"*.  \
 Log in and have fun! :smile:
 
-9) Finally, to start collecting weather data, your need to tune crontab.
-Open file _crontab_e.txt_ and copy all the contents.
-Run command: _crontab -e_
-Insert insert copied to the end, save and exit file.
+9) Finally, to start collecting weather data, your need to tune crontab. \
+Open file _crontab_e.txt_ and copy all the contents. \
+Run command: _crontab -e_ \
+Insert insert copied to the end, save and exit file. \
 Check *cron* is running: _sudo service cron status_
 
 
