@@ -1,16 +1,30 @@
-{% extends "user_profile/base_container.html" %}
+{% extends "website/base.html" %}
 
-{% block inner_content %}
-	<div class="text">
-		<p class="h5 text-gray-400 mb-4">The Website Idea:</p>
-	    <p class="text-gray-400 mb-2 row">
-			At this point in time, the site was created for educational purposes as a portfolio project.<br/>
-			The idea of the site came with the following question:<br/>
-			What happens if you save the weather forecast data and then compare it with the actual weather that has occurred?<br/>
-			Thus, it will be possible to graphically evaluate which of the services is most accurate in certain conditions.<br/>
-			The task of covering the whole world and all available public data of weather sites is difficult for me at the moment.<br/>
-			Therefore, if you would like to see the location you are interested in on the site, then you need to link it manually.<br/>
-			The necessary tools for it are presented in the navigation bar on the left in the Contribution section.<br/>
-		</p>
+{% block content %}
+	<div class="text-gray-300 col-7 px-5">
+		</br>
+		<h3 id="welcome-to-the-agweather-help-">Welcome to the AGWeather help!</h3>
+		<p>The site operates in two display modes: </br>
+		<strong>Forecast</strong> and <strong>Archive</strong> (see display section on the navigation bar on the left)</p>
+		<p>In the <strong>forecast mode</strong>, the graph displays forecast curves showing changes of one of the three weather parameters: temperature, pressure or wind speed. The color of the curves indicates a specific data source (for example: red is Yandex). </br>
+		There are three drop-down lists above the chart, with which you can select: </p>
+		<ul>
+		<li>Forecast location. The upper electronic clock (green digits) shows the local time of the selected location.</li>
+		<li>Forecast parameter. The curves of it will be displayed on the graph.</li>
+		<li>Forecast period. A maximum of 14 days.</li>
+		</ul>
+		<p>In the <strong>archive mode</strong>, the graph shows the archive curve (thin blue line, source RP5) and triangles of forecasts recorded at that time with the selected prediction range. The color of the triangles, as in forecasts, indicates the data source.
+		There are five drop-down lists above the chart, the first three of which are similar to the forecast mode. 
+		Using the last two, you can select:</p>
+		<ul>
+		<li>The weather prediction period. The smaller it is, the more accurate the predictions were made: the triangles become closer to the archived curve. You can check it out for yourself!)</li>
+		<li>The end date of the archive. It is selected from the drop-down calendar.</li>
+		</ul>
+
+		</br>
+		</br>
+		<p>The <strong>Contribution section</strong> provides tools and instructions for adding locations, forecast/archive templates, and forecast sources.
+		That is, you can add your favorite city yourself to start collecting data on it.</p>
+		
     </div>
 {% endblock %}

@@ -9,7 +9,7 @@ You are welcome to visit it by link: http://agweather.ru/
 At this point, this project was created for only educational purposes as a portfolio project.
 The idea of the project came to me with the following question:
 
-_What happens if to save the weather forecast data and then compare it with the actual weather that has occurred?_
+>_What happens if to save the weather forecast data and then compare it with the actual weather that has occurred?_
 
 Thus, it will be possible to graphically evaluate which of the services is most accurate in certain conditions.
 
