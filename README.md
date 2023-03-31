@@ -60,7 +60,10 @@ Save it as ".env"
 6) To launch containers, run command:
  _docker-compose up -d_
 
-7) If everything Ok, all containers have been started, you can visit our web-application by link: http://localhost:80
+![agw_screenshot1](https://github.com/OtekvonSoraden/agweather-on-docker/assets/92234377/5a5c1179-3e9c-408e-a5b5-b3b2542e779c)
+
+
+8) If everything Ok, all containers have been started, you can visit our web-application by link: http://localhost:80
 Default superuser is 'admin' with the password "wYuA*v3C9AaX". 
 Log in and have fun!
 
