@@ -4,7 +4,6 @@ services:
   backend:
     container_name: backend
     restart: always
-    # image: otekvonsoraden/agweather_backend:latest
     build: 
       context: ../../backend
       dockerfile: Dockerfile.prod
@@ -22,7 +21,6 @@ services:
   db:
     container_name: db
     restart: always
-    # image: postgres:15-alpine
     build: 
       context: ../../db
       dockerfile: Dockerfile

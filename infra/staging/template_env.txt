@@ -1,0 +1,60 @@
+# !!!TO ACTIVATE THIS ENV FILE rename it from "template_env.txt" to ".env"
+
+DEBUG=0
+# 1. For production use change key below!!!
+SECRET_KEY="+dqz2ta62*#r^3ffe1(fcb+5q^rwg&il#_%ew5yqk5aen6)bny"
+DJANGO_ALLOWED_HOSTS=*
+
+# 2. Yandex app is used to store database dumps in Yandex Disk.
+# Your need to create new Yandex app and get debugging token:
+# Follow the instruction by link:
+# https://yandex.ru/dev/disk-api/doc/ru/concepts/quickstart?from=gofooter
+YANDEX_TOKEN="<insert token here>"
+
+# 3. Yandex SMTP is used to activate new users via email.
+# You need password. Get it by instruction:
+# https://id.yandex.ru/security/app-passwords
+YANDEX_EMAIL_HOST_PASSWORD=<insert password here>
+
+# 4. Telegram is used for logging. 
+# To create new bot vs token use BotFather.
+# !!!Don't forget to start chat with bot Telegram, or you'll catch an error
+TELEGRAM_TOKEN=<insert token here>
+# It is your Telegram id
+TELEGRAM_USERS=<insert your id here>
+
+# Proxies for scraping.
+# 0: no use proxy,
+# 1: every day next from list
+# 2: random choice from list
+PROXY_MODE=0
+# it is just example:
+PROXIES="38.170.252.213:9339:Df00EY:fZn4Zr"
+
+# Django database settings. You can change the User and Password
+POSTGRES_ENGINE=django.db.backends.postgresql
+POSTGRES_DB=agweather_db
+POSTGRES_USER=otekvonsoraden
+POSTGRES_PASSWORD=")gK99jerhi6JV5ydgXPGS"
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+
+BACKEND_PORT=8000
+
+
+VIRTUAL_HOST=localhost
+VIRTUAL_PORT=8000
+LETSENCRYPT_HOST=localhost
+CSRF_TRUSTED_ORIGINS=https://localhost
+
+# For prod deployment you need 
+# to register your domain name and replace by it 'localhost' in three places
+# See my example:
+#VIRTUAL_HOST=agweather.ru
+#VIRTUAL_PORT=8000
+#LETSENCRYPT_HOST=agweather.ru
+#CSRF_TRUSTED_ORIGINS=https://agweather.ru
+
+# 5. Set yoy email address
+DEFAULT_EMAIL=<your email>
+NGINX_PROXY_CONTAINER=nginx-proxy
