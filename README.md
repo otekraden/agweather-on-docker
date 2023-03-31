@@ -2,7 +2,7 @@
 
 This web application was built in Python using Django framework.
 It has been deployed on VPS server (Ubuntu 20.04) from the Docker Container.
-You are welcome to visit it by link: https://www.agweather.ru/
+You are welcome to visit it by link: http://agweather.ru/
 
       
 ## The Project Idea
@@ -42,10 +42,12 @@ I'am planning to remake this app with Django REST & Vue.js frameworks. So there 
 I have written brief instruction how to do it from Docker containers. 
 Follow all the steps below and launch the app yourself!
 
-1) Since Docker technology is used here, it doesn't matter which operating system is used, but just in case, I'm clarifying: Ubuntu 20.04
+1) Since Docker technology is used here, it doesn't matter which operating system is used, but just in case, I'm clarifying: _Ubuntu 20.04_
+Launch terminal.
 
-2) At first you need installed Docker vs Docker-compose. Check their installations.
-I have: Docker version 25.0.3, Docker Compose version v2.24.6. 
+2) At first you need installed Docker vs Docker-compose. Check their installations:
+_docker --version && docker-compose --version_
+I have: _Docker version 25.0.3, Docker Compose version v2.24.6_ 
 If you need installation, see here: https://docs.docker.com/engine/install/
 
 3) Clone repository by command:
@@ -65,7 +67,13 @@ Save it as ".env"
 
 8) If everything Ok, all containers have been started, you can visit our web-application by link: http://localhost:80
 Default superuser is 'admin' with the password "wYuA*v3C9AaX". 
-Log in and have fun!
+Log in and have fun! :smile:
+
+9) Finally, to start collecting weather data, your need to tune crontab.
+Open file _crontab_e.txt_ and copy all the contents.
+Run command: _crontab -e_
+Insert insert copied to the end, save and exit file.
+Check *cron* is running: _sudo service cron status_
 
 
 ## Stack of Used Technologies
