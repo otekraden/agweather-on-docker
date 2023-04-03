@@ -65,7 +65,7 @@ Save it as ".env"
 
 
 8) If everything OK, all containers have been started, you can visit our web-application by link: http://localhost:80 \
-Default superuser is *'admin'* with the password: *wYuA*v3C9AaX*.  \
+Default superuser is *'admin'* with the password: wYuA*v3C9AaX  \
 Log in and have fun! :smile:
 
 9) Finally, to start collecting weather data, your need to tune crontab. \
