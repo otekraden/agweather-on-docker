@@ -19,11 +19,11 @@ Thus, it will be possible to graphically evaluate which of the services is most 
 
 ### This Django project consist of the two apps: <br/>
 
-At the moment, Both are temporary in the "backend" folder.
+At the moment, both are temporary in the "backend" folder.
 
 #### 1. Datascraper
 
-This is the backend part, which responsible for parsing and saving weather information to the database.
+This is the backend part, which responsible for scraping and saving weather information to the database.
 
 On working server crontab is configured to run periodic tasks:
 
@@ -64,8 +64,8 @@ Save it as ".env"
 ![agw_screenshot1](https://github.com/OtekvonSoraden/agweather-on-docker/assets/92234377/5a5c1179-3e9c-408e-a5b5-b3b2542e779c)
 
 
-8) If everything Ok, all containers have been started, you can visit our web-application by link: http://localhost:80 \
-Default superuser is *'admin'* with the password *"wYuA*v3C9AaX"*.  \
+8) If everything OK, all containers have been started, you can visit our web-application by link: http://localhost:80 \
+Default superuser is *'admin'* with the password: *wYuA*v3C9AaX*.  \
 Log in and have fun! :smile:
 
 9) Finally, to start collecting weather data, your need to tune crontab. \
